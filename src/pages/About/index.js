@@ -10,7 +10,7 @@ const About = () => {
 
   const loadData = async () => {
     const data = await fetch(
-      'https://raw.githubusercontent.com/TarikHuber/react-most-wanted/master/README.md'
+      'https://github.com/SeanDylan1982/webuildlinks/blob/master/README.md'
     )
     const text = await data.text()
     setSource(text)
