@@ -1,4 +1,5 @@
 import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
@@ -8,6 +9,7 @@ import CardHeader from '@mui/material/CardHeader'
 import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import StarIcon from '@mui/icons-material/StarBorder'
+import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import GlobalStyles from '@mui/material/GlobalStyles'
@@ -23,7 +25,7 @@ function Copyright (props) {
     >
       {'Copyright © '}
       <Link color='inherit' href='https://mui.com/'>
-        WeBuildWebs
+        Your Website
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -33,44 +35,40 @@ function Copyright (props) {
 
 const tiers = [
   {
-    title: 'Single Page Website',
-    subheader: 'A great start',
-    price: '950',
+    title: 'Free',
+    price: '0',
     description: [
-      'Single Page Brochure Design',
-      'Google Maps Registration',
-      'Ordering/Messaging Feature',
-      'Contact Info with Links'
+      '10 users included',
+      '2 GB of storage',
+      'Help center access',
+      'Email support'
     ],
-    buttonText: 'Get in contact today!',
+    buttonText: 'Sign up for free',
     buttonVariant: 'outlined'
   },
   {
-    title: 'Website & Socials',
+    title: 'Pro',
     subheader: 'Most popular',
-    price: '1500',
+    price: '15',
     description: [
-      'Single Page Brochure Website',
-      'Google Maps Registration',
-      'Ordering/Messaging Feature',
-      'Contact Info with Links',
-      '3 x Social Media Accounts',
-      'Setup, customized & linked to your website!'
+      '20 users included',
+      '10 GB of storage',
+      'Help center access',
+      'Priority email support'
     ],
-    buttonText: 'Get started today!',
+    buttonText: 'Get started',
     buttonVariant: 'contained'
   },
   {
-    title: 'Monthly Website & Socials Management',
-    subheader: 'Premium Service',
-    price: '500p/m',
+    title: 'Enterprise',
+    price: '30',
     description: [
-      'Weekly posts to 3 socials',
-      'Once a month product updates',
-      'Access to analytics reports',
+      '50 users included',
+      '30 GB of storage',
+      'Help center access',
       'Phone & email support'
     ],
-    buttonText: 'Contact us now!',
+    buttonText: 'Contact us',
     buttonVariant: 'outlined'
   }
 ]
@@ -78,25 +76,25 @@ const tiers = [
 const footers = [
   {
     title: 'Company',
-    description: ['Home', 'About us', 'Contact us', 'Locations']
+    description: ['Team', 'History', 'Contact us', 'Locations']
   },
   {
     title: 'Features',
     description: [
-      'Domain name included',
-      '1 Year free hosting',
-      'Free Stock Imagery',
-      'Modern design',
-      'Advanced features available'
+      'Cool stuff',
+      'Random feature',
+      'Team feature',
+      'Developer stuff',
+      'Another one'
     ]
   },
   {
-    title: 'Portfolio',
+    title: 'Resources',
     description: [
-      'Venda Brothers Chysa Nyama',
-      'Business Dashboard',
-      'Tablet Home Page',
-      'Source code available'
+      'Resource',
+      'Resource name',
+      'Another resource',
+      'Final resource'
     ]
   },
   {
@@ -112,7 +110,47 @@ function PricingContent () {
         styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
       />
       <CssBaseline />
-
+      <AppBar
+        position='static'
+        color='default'
+        elevation={0}
+        sx={{ borderBottom: theme => `1px solid ${theme.palette.divider}` }}
+      >
+        <Toolbar sx={{ flexWrap: 'wrap' }}>
+          <Typography variant='h6' color='inherit' noWrap sx={{ flexGrow: 1 }}>
+            Company name
+          </Typography>
+          <nav>
+            <Link
+              variant='button'
+              color='text.primary'
+              href='#'
+              sx={{ my: 1, mx: 1.5 }}
+            >
+              Features
+            </Link>
+            <Link
+              variant='button'
+              color='text.primary'
+              href='#'
+              sx={{ my: 1, mx: 1.5 }}
+            >
+              Enterprise
+            </Link>
+            <Link
+              variant='button'
+              color='text.primary'
+              href='#'
+              sx={{ my: 1, mx: 1.5 }}
+            >
+              Support
+            </Link>
+          </nav>
+          <Button href='#' variant='outlined' sx={{ my: 1, mx: 1.5 }}>
+            Login
+          </Button>
+        </Toolbar>
+      </AppBar>
       {/* Hero unit */}
       <Container
         disableGutters
@@ -127,7 +165,7 @@ function PricingContent () {
           color='text.primary'
           gutterBottom
         >
-          Connecting you where it really counts
+          Pricing
         </Typography>
         <Typography
           variant='h5'
@@ -135,12 +173,9 @@ function PricingContent () {
           color='text.secondary'
           component='p'
         >
-          <ul>
-            <li>Professional, affordable business web design</li>
-            <li>Professional management of your website and socials</li>
-            <li>Fixed pricing, no contracts and no hidden costs!</li>
-          </ul>
-          <h3>That's what we do!</h3>
+          Quickly build an effective pricing table for your potential customers
+          with this layout. It&apos;s built with default MUI components with
+          little customization.
         </Typography>
       </Container>
       {/* End hero unit */}
@@ -152,9 +187,7 @@ function PricingContent () {
               item
               key={tier.title}
               xs={12}
-              sm={
-                tier.title === 'Monthly Website & Socials Management' ? 12 : 6
-              }
+              sm={tier.title === 'Enterprise' ? 12 : 6}
               md={4}
             >
               <Card>
@@ -162,9 +195,7 @@ function PricingContent () {
                   title={tier.title}
                   subheader={tier.subheader}
                   titleTypographyProps={{ align: 'center' }}
-                  action={
-                    tier.title === 'Website & Socials' ? <StarIcon /> : null
-                  }
+                  action={tier.title === 'Pro' ? <StarIcon /> : null}
                   subheaderTypographyProps={{
                     align: 'center'
                   }}
@@ -189,12 +220,11 @@ function PricingContent () {
                       variant='h3'
                       color='text.primary'
                     >
-                      R{tier.price}
+                      ${tier.price}
                     </Typography>
-                    <Typography
-                      variant='h6'
-                      color='text.secondary'
-                    ></Typography>
+                    <Typography variant='h6' color='text.secondary'>
+                      /mo
+                    </Typography>
                   </Box>
                   <ul>
                     {tier.description.map(line => (

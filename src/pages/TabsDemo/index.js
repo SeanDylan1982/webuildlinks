@@ -11,21 +11,21 @@ const TabsDemo = () => {
     <Page
       pageTitle={intl.formatMessage({
         id: 'tabs_demo',
-        defaultMessage: 'Tabs demo',
+        defaultMessage: 'Tabs demo'
       })}
       tabs={
-        <AppBar position="static">
+        <AppBar position='static'>
           <Tabs
             value={tab}
             onChange={(e, t) => setTab(t)}
-            aria-label="simple tabs example"
+            aria-label='simple tabs example'
             centered
-            textColor="inherit"
-            indicatorColor="secondary"
+            textColor='inherit'
+            indicatorColor='secondary'
           >
-            <Tab label="Item One" value="one" />
-            <Tab label="Item Two" value="two" />
-            <Tab label="Item Three" value="three" />
+            <Tab label='Item One' value='one' />
+            <Tab label='Item Two' value='two' />
+            <Tab label='Item Three' value='three' />
           </Tabs>
         </AppBar>
       }
