@@ -27,7 +27,7 @@ const About = () => {
       <Scrollbar>
         <div style={{ padding: 12 }}>
           {source && (
-            <ReactMarkdown className="markdown-body" children={source} />
+            <ReactMarkdown className='markdown-body' children={source} />
           )}
         </div>
       </Scrollbar>
